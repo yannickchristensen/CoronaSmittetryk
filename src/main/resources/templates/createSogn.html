@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:classth="http://www.w3.org/1999/xhtml">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+<head>
+    <meta charset="UTF-8">
+    <title>Tilføj nyt sogn</title>
+</head>
+<body>
+<div class="container">
+    <div class="row justify-content-center">
+        <h1>Tilføj nyt sogn</h1>
+    </div>
+    <div class="row">
+        <form action="/createSogn" method="post" th:object="${sogn}">
+            <div class="form-group">
+                <p>Sogne Kode</p>
+                <input class="form-control" type="number" name="kode" placeholder="fx 8876">
+                <p>Navn</p>
+                <input class="form-control" type="text" name="navn" placeholder="fx Gudbjerg Sogn">
+                <p>Smittetryk</p>
+                <input class="form-control" type="number" min="0" step=".01" name="smittetryk" placeholder="fx 1.3">
+                <p>Nedluknigs dato</p>
+                <input class="form-control" type="date" name="datoForNedlukning">
+                <p>Nedlukket?</p>
+                <input class="form-control" type="checkbox" name="nedlukket">
+            </div>
+            <div class="form-group">
+                <label for="kommune">Vælg kommune</label>
+                <select class="form-control selectpicker" id="kommune" name="kommune">
+                    <option th:each="kommune : ${kommuner}"
+                            th:value="${kommune.id}"
+                            th:text="${kommune.navn}"
+                    >kommune
+                    </option>
+                </select>
+            </div>
+            <p id="space"></p>
+            <div class="form-group">
+                <input type="submit" value="Tilføj Sogn" class="btn btn-primary" role="button">
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>

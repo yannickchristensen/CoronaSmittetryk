@@ -4,7 +4,7 @@
       integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 <head>
     <meta charset="UTF-8">
-    <title>Sogne and their kommuner</title>
+    <title>Sogne</title>
 </head>
 <body>
 <div class="container">
@@ -14,10 +14,10 @@
             <thead class="thead-dark">
             <tr>
                 <th>ID</th>
-                <th>Sogne kode</th>
+                <th>Sognekode</th>
                 <th>Navn</th>
                 <th>Nedlukningsdato</th>
-                <th>nedlukket</th>
+                <th>Nedlukket</th>
                 <th>Kommune</th>
                 <th>Rediger</th>
             </tr>
@@ -28,11 +28,11 @@
                 <td th:text="${sogn.kode}"/>
                 <td th:text="${sogn.navn}"/>
                 <td th:text="${sogn.datoForNedlukning}"/>
-                <input type="checkbox" name="nedlukket" th:checked="${sogn.nedlukket}" />
+                <td><input type="checkbox" name="nedlukket" th:checked="${sogn.nedlukket}" /></td>
                 <td th:text="${sogn.kommune.navn}"/>
                 <td>
                     <div class="btn-group">
-                        <a th:href="@{'/update/' + ${sogn.id}}" class="btn btn-secondary">Opdater</a>
+                        <a th:href="@{'/opdater/' + ${sogn.id}}" class="btn btn-secondary">Opdater</a>
                         <a th:href="@{'/delete/' + ${sogn.id}}" class="btn btn-danger">Slet</a>
                     </div>
                 </td>
@@ -41,7 +41,7 @@
         </table>
     </div>
     <div class="row">
-        <a href="create" class="btn btn-primary" role="button">Tilføj Sogn</a>
+        <a href="createSogn" class="btn btn-primary" role="button">Tilføj Sogn</a>
     </div>
     <br>
     <div class="row">

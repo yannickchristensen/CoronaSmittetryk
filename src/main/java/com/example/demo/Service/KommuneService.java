@@ -15,7 +15,6 @@ public class KommuneService {
     @Autowired
     KommuneRepository kommuneRepository;
 
-    //method returns kommuner in hashset instead of iterable
     public Set<Kommune> findAll(){
         Set<Kommune> kommuner = new HashSet<>();
         for (Kommune kommune : kommuneRepository.findAll()) {
@@ -24,7 +23,6 @@ public class KommuneService {
         return kommuner;
     }
 
-    //method returns kommune object instead of optional
     public Kommune findById(Long id){
         Optional<Kommune> optionalKommune = kommuneRepository.findById(id);
         if (optionalKommune.isEmpty()){
@@ -38,12 +36,8 @@ public class KommuneService {
     }
 
     public Kommune update(Kommune kommune){
-        if (!findAll().contains(kommune)){
-            throw new RuntimeException("kommune " + kommune.getId() + " not found");
-        } else {
             return kommuneRepository.save(kommune);
         }
-    }
 
     public void deleteById(Long id){
         kommuneRepository.deleteById(id);

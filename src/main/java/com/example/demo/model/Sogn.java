@@ -34,12 +34,21 @@ public class Sogn {
     public Sogn() {
     }
 
-    public Sogn(Long kode, String navn, Kommune kommune, Double smittetryk, LocalDate datoForNedlukning) {
+    public Sogn(Long kode, String navn, Kommune kommune, Double smittetryk, LocalDate datoForNedlukning, boolean nedlukket) {
         this.kode = kode;
         this.navn = navn;
         this.kommune = kommune;
         this.smittetryk = smittetryk;
         this.datoForNedlukning = datoForNedlukning;
+        this.nedlukket = nedlukket;
+    }
+
+    public boolean isNedlukket() {
+        return nedlukket;
+    }
+
+    public void setNedlukket(boolean nedlukket) {
+        this.nedlukket = nedlukket;
     }
 
     public long getId() {

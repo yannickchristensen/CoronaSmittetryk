@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:classth="http://www.w3.org/1999/xhtml">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+<head>
+    <meta charset="UTF-8">
+    <title>Opdater</title>
+</head>
+<body>
+<div class="container">
+    <h1>Opdater</h1>
+    <div class="row">
+        <form action="/opdater" th:object="${sogn}" method="post">
+            <div class="form-group">
+                <input type="hidden" name="id" th:value="${id}">
+                <label for="kode">Sognekode:</label>
+                <input id="kode" class="form-control" type="number" name="kode" th:field="*{kode}" th:value="${kode}">
+                <label for="name">Name:</label>
+                <input id="name" class="form-control" type="text" name="navn" th:field="*{navn}" th:value="${navn}">
+                <label for="smittetryk">smittetryk</label>
+                <input id="smittetryk" class="form-control" type="number" min="0" step=".01" name="smittetryk"
+                       th:field="*{smittetryk}" th:value="${smittetryk}">
+                <label for="datoForNedlukning">Dato for nedlukning</label>
+                <input id="datoForNedlukning" class="form-control" type="date" name="datoForNedlukning"
+                       th:field="*{datoForNedlukning}" th:value="${datoForNedlukning}">
+                <label for="nedlukket">nedlukket:</label>
+                <input id="nedlukket" type="checkbox" name="nedlukket" th:checked="${sogn.nedlukket}" />
+                <div/>
+                <div class="form-group">
+                    <label for="kommune">Choose brand</label>
+                    <select class="form-control selectpicker" id="kommune" name="kommune" th:field="*{kommune.id}">
+                        <option th:each="kommune : ${kommuner}"
+                                th:value="${kommune.id}"
+                                th:text="${kommune.navn}">kommune
+                        </option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="OPDATER" class="btn btn-success" role="button">
+                </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>

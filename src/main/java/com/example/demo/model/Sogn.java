@@ -1,10 +1,7 @@
 package com.example.demo.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import org.springframework.format.annotation.DateTimeFormat;
-
-
 import javax.persistence.*;
 import java.time.LocalDate;
 
@@ -19,7 +16,6 @@ public class Sogn {
 
     private String navn;
 
-    //OneToOne relationship
     @JsonBackReference
     @ManyToOne
     @JoinColumn(name = "kommune_id")
@@ -99,15 +95,4 @@ public class Sogn {
         this.datoForNedlukning = datoForNedlukning;
     }
 
-    @Override
-    public String toString() {
-        return "Sogn{" +
-                "id=" + id +
-                ", kode=" + kode +
-                ", navn='" + navn + '\'' +
-                ", kommune=" + kommune +
-                ", smittetryk=" + smittetryk +
-                ", datoForNedlukning=" + datoForNedlukning +
-                '}';
-    }
 }

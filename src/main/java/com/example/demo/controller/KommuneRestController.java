@@ -16,12 +16,10 @@ import java.util.Optional;
 public class KommuneRestController {
     KommuneRepository kommuneRepository;
 
-    //constructor injection
     public KommuneRestController(KommuneRepository kommuneRepository) {
         this.kommuneRepository = kommuneRepository;
     }
 
-    //get list
     @GetMapping("/kommuner")
     public ResponseEntity<Iterable<Kommune>> findKommuner() {
         return ResponseEntity.status(HttpStatus.OK).body(kommuneRepository.findAll());
@@ -33,7 +31,6 @@ public class KommuneRestController {
         if (optionalRecipe.isPresent()) {
             return ResponseEntity.status(HttpStatus.OK).body(optionalRecipe);
         } else {
-            //Not found
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(optionalRecipe);
         }
     }

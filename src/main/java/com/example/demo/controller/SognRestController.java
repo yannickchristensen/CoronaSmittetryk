@@ -1,6 +1,5 @@
 package com.example.demo.controller;
 
-
 import com.example.demo.model.Kommune;
 import com.example.demo.model.Sogn;
 import com.example.demo.repository.KommuneRepository;
@@ -8,7 +7,6 @@ import com.example.demo.repository.SognRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -33,7 +31,6 @@ import java.util.Optional;
 
         @GetMapping("/sogn/{id}")
         public ResponseEntity<Optional<Sogn>> findBySogneId(@PathVariable Long id){
-
             Optional<Sogn> optionalSogn = sognRepository.findById(id);
             if(optionalSogn.isPresent()){
                 return ResponseEntity.status(HttpStatus.OK).body(optionalSogn);

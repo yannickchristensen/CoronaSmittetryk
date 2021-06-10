@@ -1,8 +1,6 @@
 package com.example.demo.model;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-
 import javax.persistence.*;
 import java.util.Set;
 
@@ -17,7 +15,6 @@ public class Kommune {
 
     private String navn;
 
-    //OneToOne relationship
     @JsonManagedReference
     @OneToMany (cascade = CascadeType.ALL, mappedBy = "kommune")
     private Set<Sogn> sogne;
@@ -30,6 +27,14 @@ public class Kommune {
         this.navn = navn;
     }
 
+    public double averageSmittetryk(){
+        double averageSmittetryk = 0;
+        for(Sogn sogn: sogne){
+            averageSmittetryk =+ sogn.getSmittetryk();
+        }
+        averageSmittetryk = averageSmittetryk/ sogne.size();
+        return averageSmittetryk;
+    }
 
     public long getId() {
         return id;
@@ -63,13 +68,4 @@ public class Kommune {
         this.sogne = sogns;
     }
 
-    @Override
-    public String toString() {
-        return "Kommune{" +
-                "id=" + id +
-                ", kode=" + kode +
-                ", navn='" + navn + '\'' +
-                ", sogns=" + sogne +
-                '}';
-    }
 }

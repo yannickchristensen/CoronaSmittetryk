@@ -30,6 +30,7 @@ public class Kommune {
         this.navn = navn;
     }
 
+
     public long getId() {
         return id;
     }

@@ -2,6 +2,7 @@ package com.example.demo.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import org.springframework.format.annotation.DateTimeFormat;
 
 
 import javax.persistence.*;
@@ -25,8 +26,10 @@ public class Sogn {
     private Kommune kommune;
 
     private Double smittetryk;
-
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate datoForNedlukning;
+
+    private boolean nedlukket;
 
     public Sogn() {
     }

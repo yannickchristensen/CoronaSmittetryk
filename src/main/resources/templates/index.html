@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:classth="http://www.w3.org/1999/xhtml">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+<head>
+    <meta charset="UTF-8">
+    <title>Sogne and their kommuner</title>
+</head>
+<body>
+<div class="container">
+    <h1 style="text-align: center">Sogne</h1>
+    <div class="row">
+        <table class="table">
+            <thead class="thead-dark">
+            <tr>
+                <th>ID</th>
+                <th>Sogne kode</th>
+                <th>Navn</th>
+                <th>Nedlukningsdato</th>
+                <th>nedlukket</th>
+                <th>Kommune</th>
+                <th>Rediger</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="sogn : ${sogne}">
+                <td th:text="${sogn.id}"/>
+                <td th:text="${sogn.kode}"/>
+                <td th:text="${sogn.navn}"/>
+                <td th:text="${sogn.datoForNedlukning}"/>
+                <input type="checkbox" name="nedlukket" th:checked="${sogn.nedlukket}" />
+                <td th:text="${sogn.kommune.navn}"/>
+                <td>
+                    <div class="btn-group">
+                        <a th:href="@{'/update/' + ${sogn.id}}" class="btn btn-secondary">Opdater</a>
+                        <a th:href="@{'/delete/' + ${sogn.id}}" class="btn btn-danger">Slet</a>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="row">
+        <a href="create" class="btn btn-primary" role="button">Tilføj Sogn</a>
+    </div>
+    <br>
+    <div class="row">
+        <a href="kommuner" class="btn btn-primary" role="button">Vis kommuner</a>
+    </div>
+</div>
+</body>
+</html>

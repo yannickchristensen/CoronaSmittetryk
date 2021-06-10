@@ -19,7 +19,7 @@ public class Sogn {
     private LocalDate nedlukningStart;
 
     @JsonManagedReference
-    @OneToOne
+    @OneToOne (cascade = CascadeType.ALL)
     private Kommune kommune;
 
 

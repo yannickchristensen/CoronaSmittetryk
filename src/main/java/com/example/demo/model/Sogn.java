@@ -3,6 +3,7 @@ package com.example.demo.model;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
+
 import javax.persistence.*;
 import java.time.LocalDate;
 
@@ -11,44 +12,47 @@ public class Sogn {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private long id;
 
-    private int sognKode;
+    private Long kode;
+
     private String navn;
-    private double smittetryk;
-    private LocalDate nedlukningStart;
 
-    @JsonManagedReference
-    @OneToOne (cascade = CascadeType.ALL)
+    //OneToOne relationship
+    @JsonBackReference
+    @ManyToOne
+    @JoinColumn(name = "kommune_id")
     private Kommune kommune;
 
+    private Double smittetryk;
 
-
-    public Sogn(int sognKode, String navn, double smittetryk, LocalDate nedlukningStart) {
-        this.sognKode = sognKode;
-        this.navn = navn;
-        this.smittetryk = smittetryk;
-        this.nedlukningStart = nedlukningStart;
-    }
+    private LocalDate datoForNedlukning;
 
     public Sogn() {
-
     }
 
-    public Long getId() {
+    public Sogn(Long kode, String navn, Kommune kommune, Double smittetryk, LocalDate datoForNedlukning) {
+        this.kode = kode;
+        this.navn = navn;
+        this.kommune = kommune;
+        this.smittetryk = smittetryk;
+        this.datoForNedlukning = datoForNedlukning;
+    }
+
+    public long getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(long id) {
         this.id = id;
     }
 
-    public int getSognKode() {
-        return sognKode;
+    public Long getKode() {
+        return kode;
     }
 
-    public void setSognKode(int sognKode) {
-        this.sognKode = sognKode;
+    public void setKode(Long kode) {
+        this.kode = kode;
     }
 
     public String getNavn() {
@@ -59,27 +63,39 @@ public class Sogn {
         this.navn = navn;
     }
 
-    public double getSmittetryk() {
-        return smittetryk;
-    }
-
-    public void setSmittetryk(double smittetryk) {
-        this.smittetryk = smittetryk;
-    }
-
-    public LocalDate getNedlukningStart() {
-        return nedlukningStart;
-    }
-
-    public void setNedlukningStart(LocalDate nedlukningStart) {
-        this.nedlukningStart = nedlukningStart;
-    }
-
     public Kommune getKommune() {
         return kommune;
     }
 
     public void setKommune(Kommune kommune) {
         this.kommune = kommune;
+    }
+
+    public Double getSmittetryk() {
+        return smittetryk;
+    }
+
+    public void setSmittetryk(Double smittetryk) {
+        this.smittetryk = smittetryk;
+    }
+
+    public LocalDate getDatoForNedlukning() {
+        return datoForNedlukning;
+    }
+
+    public void setDatoForNedlukning(LocalDate datoForNedlukning) {
+        this.datoForNedlukning = datoForNedlukning;
+    }
+
+    @Override
+    public String toString() {
+        return "Sogn{" +
+                "id=" + id +
+                ", kode=" + kode +
+                ", navn='" + navn + '\'' +
+                ", kommune=" + kommune +
+                ", smittetryk=" + smittetryk +
+                ", datoForNedlukning=" + datoForNedlukning +
+                '}';
     }
 }

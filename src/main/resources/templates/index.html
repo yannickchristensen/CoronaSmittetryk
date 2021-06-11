@@ -10,12 +10,13 @@
 <div class="container">
     <h1 style="text-align: center">Sogne</h1>
     <div class="row">
-        <table class="table">
-            <thead class="thead-dark">
+        <table class="table table-hover">
+            <thead class="thead-light">
             <tr>
                 <th>ID</th>
                 <th>Sognekode</th>
                 <th>Navn</th>
+                <th>Smittetryk</th>
                 <th>Nedlukningsdato</th>
                 <th>Nedlukket</th>
                 <th>Kommune</th>
@@ -27,13 +28,14 @@
                 <td th:text="${sogn.id}"/>
                 <td th:text="${sogn.kode}"/>
                 <td th:text="${sogn.navn}"/>
+                <td th:text="${sogn.smittetryk}"/>
                 <td th:text="${sogn.datoForNedlukning}"/>
                 <td><input type="checkbox" name="nedlukket" th:checked="${sogn.nedlukket}" /></td>
                 <td th:text="${sogn.kommune.navn}"/>
                 <td>
                     <div class="btn-group">
-                        <a th:href="@{'/opdater/' + ${sogn.id}}" class="btn btn-secondary">Opdater</a>
-                        <a th:href="@{'/delete/' + ${sogn.id}}" class="btn btn-danger">Slet</a>
+                        <a th:href="@{'/opdater/' + ${sogn.id}}" class="btn btn-info">Opdater</a>
+                        <a th:href="@{'/delete/' + ${sogn.id}}" class="btn btn-outline-dark">Slet</a>
                     </div>
                 </td>
             </tr>
@@ -41,11 +43,11 @@
         </table>
     </div>
     <div class="row">
-        <a href="createSogn" class="btn btn-primary" role="button">Tilføj Sogn</a>
+        <a href="createSogn" class="btn btn-success btn-lg" role="button">Tilføj Sogn</a>
     </div>
     <br>
     <div class="row">
-        <a href="kommuner" class="btn btn-primary" role="button">Vis kommuner</a>
+        <a href="kommuner" class="btn btn-primary btn-lg" role="button">Vis kommuner</a>
     </div>
 </div>
 </body>

@@ -11,20 +11,16 @@ public class Sogn {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-
     private Long kode;
-
     private String navn;
 
     @JsonBackReference
     @ManyToOne
     @JoinColumn(name = "kommune_id")
     private Kommune kommune;
-
     private Double smittetryk;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate datoForNedlukning;
-
     private boolean nedlukket;
 
     public Sogn() {

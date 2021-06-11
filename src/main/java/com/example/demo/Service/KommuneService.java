@@ -26,7 +26,7 @@ public class KommuneService {
     public Kommune findById(Long id){
         Optional<Kommune> optionalKommune = kommuneRepository.findById(id);
         if (optionalKommune.isEmpty()){
-            throw new RuntimeException("kommune " + id + " not found");
+            throw new RuntimeException("Kommune " + id + " not found");
         }
         return optionalKommune.get();
     }

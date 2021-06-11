@@ -25,7 +25,7 @@ public class SognService {
     public Sogn findById(Long id){
         Optional<Sogn> optionalSogn = sognRepository.findById(id);
         if (optionalSogn.isEmpty()){
-            throw new RuntimeException("sogn " + id + " not found");
+            throw new RuntimeException("Sogn " + id + " not found");
         }
         return optionalSogn.get();
     }

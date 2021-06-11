@@ -10,9 +10,7 @@ public class Kommune {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-
     private Long kode;
-
     private String navn;
 
     @JsonManagedReference

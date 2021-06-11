@@ -27,7 +27,7 @@
                 <input id="nedlukket" type="checkbox" name="nedlukket" th:checked="${sogn.nedlukket}" />
                 <div/>
                 <div class="form-group">
-                    <label for="kommune">Choose brand</label>
+                    <label for="kommune">Vælg Kommune</label>
                     <select class="form-control selectpicker" id="kommune" name="kommune" th:field="*{kommune.id}">
                         <option th:each="kommune : ${kommuner}"
                                 th:value="${kommune.id}"
@@ -36,7 +36,10 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <input type="submit" value="OPDATER" class="btn btn-success" role="button">
+                    <input type="submit" value="OPDATER" class="btn btn-info" role="button">
+                </div>
+                <div class="row">
+                    <a href="/" class="btn btn-secondary" role="button">Tilbage</a>
                 </div>
         </form>
     </div>

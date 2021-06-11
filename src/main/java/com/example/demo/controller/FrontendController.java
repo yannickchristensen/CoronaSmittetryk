@@ -27,35 +27,6 @@ public class FrontendController {
         return "index";
     }
 
-    @GetMapping("/kommuner")
-    public String kommuner(Model model){
-        model.addAttribute("kommuner", kommuneService.findAll());
-        return "kommuner";
-    }
-
-    @GetMapping("/createSogn")
-    public String createSogn(Model model){
-        model.addAttribute("kommuner", kommuneService.findAll());
-        return "createSogn";
-    }
-
-    @PostMapping("/createSogn")
-    public String createSogn(@ModelAttribute Sogn sogn, WebRequest request){
-        sognService.create(sogn);
-        return "redirect:/";
-    }
-
-    @GetMapping("/createKommune")
-    public String createKommune(){
-        return "createKommune";
-    }
-
-    @PostMapping("/createKommune")
-    public String createKommune(@ModelAttribute Kommune kommune){
-        kommuneService.create(kommune);
-        return "redirect:/kommuner";
-    }
-
     @GetMapping("/opdater/{id}")
     public String opdater(@PathVariable("id") Long id, Model model){
         model.addAttribute("sogn", sognService.findById(id));
@@ -74,6 +45,26 @@ public class FrontendController {
     public String delete(@PathVariable("id") Long id){
         sognService.deleteById(id);
         return "redirect:/";
+    }
+
+    @GetMapping("/createSogn")
+    public String createSogn(Model model){
+        model.addAttribute("kommuner", kommuneService.findAll());
+        return "createSogn";
+    }
+
+    @PostMapping("/createSogn")
+    public String createSogn(@ModelAttribute Sogn sogn, WebRequest request){
+        sognService.create(sogn);
+        return "redirect:/";
+    }
+
+
+
+    @GetMapping("/kommuner")
+    public String kommuner(Model model){
+        model.addAttribute("kommuner", kommuneService.findAll());
+        return "kommuner";
     }
 }
 

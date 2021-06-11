@@ -1,13 +1,10 @@
 package com.example.demo.controller;
 
 import com.example.demo.model.Kommune;
-import com.example.demo.model.Sogn;
 import com.example.demo.repository.KommuneRepository;
-import com.example.demo.repository.SognRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.Optional;
 
 @CrossOrigin(origins = "http://localhost:8080")

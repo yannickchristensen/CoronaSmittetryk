@@ -2,7 +2,6 @@ package com.example.demo.controller;
 
 import com.example.demo.Service.KommuneService;
 import com.example.demo.Service.SognService;
-import com.example.demo.model.Kommune;
 import com.example.demo.model.Sogn;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

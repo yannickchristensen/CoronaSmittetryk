@@ -4,7 +4,6 @@ import com.example.demo.model.Sogn;
 import com.example.demo.repository.SognRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.HashSet;
 import java.util.Optional;
 import java.util.Set;
@@ -14,6 +13,7 @@ public class SognService {
 
     @Autowired
     SognRepository sognRepository;
+
     public Set<Sogn> findAll(){
         Set<Sogn> sogne = new HashSet<>();
         for (Sogn sogn : sognRepository.findAll()) {

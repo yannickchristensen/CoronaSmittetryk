@@ -29,7 +29,6 @@ public class FrontendController {
     @GetMapping("/opdater/{id}")
     public String opdater(@PathVariable("id") Long id, Model model){
         model.addAttribute("sogn", sognService.findById(id));
-        //add kommuner to choose from
         model.addAttribute("kommuner", kommuneService.findAll());
         return "opdater";
     }

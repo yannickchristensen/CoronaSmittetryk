@@ -58,7 +58,6 @@ public class FrontendController {
     }
 
 
-
     @GetMapping("/kommuner")
     public String kommuner(Model model){
         model.addAttribute("kommuner", kommuneService.findAll());

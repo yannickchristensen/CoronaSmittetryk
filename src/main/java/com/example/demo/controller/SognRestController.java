@@ -72,12 +72,6 @@ import java.util.Optional;
             if(optionalSogn.isEmpty()){
                 return ResponseEntity.status(HttpStatus.NOT_FOUND).body("{'msg' : 'sogn " + id + " not found'");
             }
-            Sogn sogn = optionalSogn.get();
-            Kommune kommune = sogn.getKommune();
-            sogn.setKommune(null);
-            sognRepository.save(sogn);
-            kommuneRepository.save(kommune);
-            kommuneRepository.delete(kommune);
             sognRepository.deleteById(id);
             return ResponseEntity.status(HttpStatus.OK).body("{'msg' : 'sogn " + id + " deleted'}");
         }
